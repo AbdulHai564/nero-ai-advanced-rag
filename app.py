@@ -28,7 +28,6 @@ if st.button("▶ PROCESS", disabled=pdf is None):
             st.session_state.child_chunks = children
         finally:
             os.remove(tmp_path)
-    st.success(f"Done: {len(parents)} parents, {len(children)} children")
 
 st.divider()
 
