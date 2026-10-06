@@ -1,0 +1,13 @@
+streamlit
+langchain
+langchain-classic
+langchain-community
+langchain-qdrant
+langchain-huggingface
+langchain-cohere
+langchain-groq
+qdrant-client
+sentence-transformers
+rank_bm25
+pypdf
+python-dotenv
