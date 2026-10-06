@@ -1,4 +1,4 @@
-# 🤖 NERO.AI: Advanced RAG Document Q&A
+#  NERO.AI: Advanced RAG Document Q&A
 
 Upload a PDF, ask questions in plain English, and get answers grounded in the document, with the source passages shown underneath.
 
