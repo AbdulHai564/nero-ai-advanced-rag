@@ -6,7 +6,6 @@ from langchain_cohere import CohereRerank
 from langchain_classic.retrievers import BM25Retriever, EnsembleRetriever
 from langchain_groq import ChatGroq
 
-# ---------- loaded ONCE (module import) ----------
 embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
 child_store = QdrantVectorStore.from_existing_collection(
@@ -27,9 +26,9 @@ semantic_retriever = child_store.as_retriever(search_kwargs={"k": 10})
 
 reranker = CohereRerank(cohere_api_key=COHERE_API_KEY, model="rerank-v3.5", top_n=5)
 
-llm = ChatGroq(model="llama-3.3-70b-versatile", api_key=GROQ_API_KEY)
+llm = ChatGroq(model="openai/gpt-oss-120b", api_key=GROQ_API_KEY)
 
-# BM25 cache: rebuilt only when the child chunks change (new PDF processed)
+
 _bm25_cache = {"key": None, "retriever": None}
 
 
@@ -43,7 +42,7 @@ def get_bm25(child_chunks):
     return _bm25_cache["retriever"]
 
 
-# ---------- pipeline steps ----------
+
 def hybrid_retrieval(bm25_retriever, question):
     hybrid = EnsembleRetriever(
         retrievers=[bm25_retriever, semantic_retriever],
