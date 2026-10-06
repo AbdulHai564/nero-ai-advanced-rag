@@ -28,8 +28,9 @@ if st.button("▶ PROCESS", disabled=pdf is None):
             st.session_state.child_chunks = children
         finally:
             os.remove(tmp_path)
-
-st.divider()
+            st.success("PDF processed. Ask away!")
+          
+    st.divider()
 
 # ---------- 2. ASK ----------
 question = st.text_input("Your question", placeholder="ask anything about the document...")
